@@ -5,7 +5,7 @@ namespace thegame.Models
         /// <summary>
         /// Frontend animate transition of the cell from old to new state.
         /// </summary>
-        /// <param name="id">Id is used to identificate cell to apply right animation.</param>
+        /// <param name="id">Id is used to identificate cell to apply right animation</param>
         /// <param name="pos">Logical position of the cell in the game grid. Upper left corner is `new Vec(0, 0)`</param>
         /// <param name="type">Frontend apply images and other styling to the cell according to this type</param>
         /// <param name="content">Frontend can put this text in the cell</param>
