@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using DataLayer.Helpers;
 
 namespace DataLayer.Actions
 {
@@ -33,8 +34,7 @@ namespace DataLayer.Actions
 
         private bool IsLevelSolved(Game game)
         {
-            // TODO
-            return false;
+            return GameHelper.IsGameSolved(game);
         }
 
         private IAction[] CreateActionChain(Field field, IAction playerAction)
