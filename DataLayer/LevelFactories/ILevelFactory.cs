@@ -4,6 +4,6 @@ namespace DataLayer.LevelFactories
 {
     public interface ILevelFactory
     {
-        public Level Create(FileInfo inputFile);
+        Level Create(FileInfo inputFile);
     }
 }
