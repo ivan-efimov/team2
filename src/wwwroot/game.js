@@ -139,7 +139,6 @@ function onCellClick(e) {
     if (!game || !game.monitorMouseClicks) return;
     const x = e.target.dataset.x;
     const y = e.target.dataset.y;
-    makeMove({ clickedPos: { x, y } });
 }
 
 function initializePage() {
