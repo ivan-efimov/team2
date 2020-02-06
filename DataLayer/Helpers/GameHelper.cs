@@ -7,7 +7,7 @@ using DataLayer.Cells;
 
 namespace DataLayer.Helpers
 {
-    class GameHelper
+    public class GameHelper
     {
         public static bool IsGameSolved(Game game)
         {
