@@ -7,6 +7,6 @@ namespace DataLayer
 {
     public interface IFieldFactory
     {
-        public Field Create(Stream inputStream);
+        Field Create(Stream inputStream);
     }
 }
