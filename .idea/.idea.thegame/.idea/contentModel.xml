@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\gordo\.nuget\packages\microsoft.net.test.sdk\16.2.0\build\netcoreapp1.0" t="Include">
+      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
+    </e>
+    <e p="C:\Users\gordo\.nuget\packages\nunit3testadapter\3.15.1\build\netcoreapp2.0\nunit.engine.api.dll" t="Include" />
+    <e p="C:\Users\gordo\.nuget\packages\nunit3testadapter\3.15.1\build\netcoreapp2.0\nunit.engine.dll" t="Include" />
+    <e p="C:\Users\gordo\.nuget\packages\nunit3testadapter\3.15.1\build\netcoreapp2.0\NUnit3.TestAdapter.dll" t="Include" />
+    <e p="C:\Users\gordo\.nuget\packages\nunit3testadapter\3.15.1\build\netcoreapp2.0\NUnit3.TestAdapter.pdb" t="Include" />
+    <e p="C:\Users\gordo\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\gordo\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_thegame.296998531.00" t="ExcludeRecursive" />
+    <e p="D:\Work\Kontur\Campus\team2" t="IncludeFlat">
+      <e p="DataLayer" t="IncludeRecursive">
+        <e p="Actions" t="Include">
+          <e p="Game.cs" t="Include" />
+          <e p="GameService.cs" t="Include" />
+          <e p="IAction.cs" t="Include" />
+          <e p="IActionFactory.cs" t="Include" />
+          <e p="IActionPerformer.cs" t="Include" />
+          <e p="ITurnService.cs" t="Include" />
+          <e p="MoveAction.cs" t="Include" />
+          <e p="TurnResult.cs" t="Include" />
+          <e p="TurnService.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Cells" t="Include">
+          <e p="Box.cs" t="Include" />
+          <e p="ICell.cs" t="Include" />
+          <e p="IMovable.cs" t="Include" />
+          <e p="ISolid.cs" t="Include" />
+          <e p="Player.cs" t="Include" />
+          <e p="Target.cs" t="Include" />
+          <e p="Wall.cs" t="Include" />
+        </e>
+        <e p="Commands" t="Include">
+          <e p="ICommand.cs" t="Include" />
+          <e p="MoveCommand.cs" t="Include" />
+        </e>
+        <e p="DataLayer.csproj" t="IncludeRecursive" />
+        <e p="Field.cs" t="Include" />
+        <e p="FieldFactories" t="Include">
+          <e p="IFieldFactory.cs" t="Include" />
+          <e p="TxtFieldFactory.cs" t="Include" />
+        </e>
+        <e p="GameStorage" t="Include">
+          <e p="IGameStorage.cs" t="Include" />
+        </e>
+        <e p="Helpers" t="Include">
+          <e p="GameHelper.cs" t="Include" />
+        </e>
+        <e p="Level.cs" t="Include" />
+        <e p="Level1.txt" t="Include" />
+        <e p="LevelFactories" t="Include">
+          <e p="ILevelFactory.cs" t="Include" />
+          <e p="TxtLevelFactory.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.1" t="Include">
+              <e p="DataLayer.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="NUnitTests" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Level1.txt" t="Include" />
+        <e p="NUnitTests.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.1" t="Include">
+              <e p="NUnitTests.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="UnitTest1.cs" t="Include" />
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="src" t="IncludeRecursive">
+        <e p=".gitignore" t="Include" />
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CompositionRoot.cs" t="Include" />
+        <e p="Controllers" t="Include">
+          <e p="GamesController.cs" t="Include" />
+          <e p="MovesController.cs" t="Include" />
+        </e>
+        <e p="Converters" t="Include">
+          <e p="CommandConverter.cs" t="Include" />
+          <e p="MapConverter.cs" t="Include" />
+        </e>
+        <e p="Level1.txt" t="Include" />
+        <e p="Models" t="Include">
+          <e p="CellDto.cs" t="Include" />
+          <e p="GameDto.cs" t="Include" />
+          <e p="UserInputForMovesPost.cs" t="Include" />
+          <e p="Vec.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.1" t="Include">
+              <e p="thegame.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Services" t="Include">
+          <e p="GamesRepo.cs" t="Include" />
+          <e p="TestData.cs" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="thegame.csproj" t="IncludeRecursive" />
+        <e p="wwwroot" t="Include">
+          <e p="common.css" t="Include" />
+          <e p="favicon.ico" t="Include" />
+          <e p="game.css" t="Include" />
+          <e p="game.js" t="Include" />
+          <e p="images" t="Include">
+            <e p="bricks.png" t="Include" />
+            <e p="bricks2.png" t="Include" />
+            <e p="bricks3.png" t="Include" />
+            <e p="package.svg" t="Include" />
+            <e p="player.png" t="Include" />
+            <e p="simple_box.png" t="Include" />
+            <e p="sprites.png" t="Include" />
+            <e p="unicorn.svg" t="Include" />
+          </e>
+          <e p="index.html" t="Include" />
+        </e>
+      </e>
+      <e p="thegame.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
