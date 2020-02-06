@@ -6,14 +6,23 @@ using DataLayer.Cells;
 
 namespace DataLayer.Actions
 {
+    public interface IActionFactory
+    {
+        IAction CreateNext(Field field, IAction previousAction);
+    }
     public class ActionFactory
     {
-        IAction CreateNext(ICell actorCell, ICell targetCell, IAction previousAction)
+        public IAction CreateNext(Field field, IAction previousAction)
         {
+            var actorCell = field[
+                previousAction.ActionPoint.X,
+                previousAction.ActionPoint.Y].Last();
             if (previousAction is MoveAction action)
             {
-                
-                
+                var targetCell = field[
+                    action.DestinationPoint.X,
+                    action.DestinationPoint.Y].Last();
+                return ProcessMoveAction(actorCell, targetCell, action);
             }
 
             return new FailAction();

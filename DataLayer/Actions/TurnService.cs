@@ -1,18 +1,21 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace DataLayer.Actions
 {
     public class TurnService
     {
         private readonly IActionChainPerformer _actionChainPerformer;
+        private readonly IActionFactory _actionFactory;
 
-        public TurnService(IActionChainPerformer actionChainPerformer)
+        public TurnService(IActionChainPerformer actionChainPerformer, IActionFactory actionFactory)
         {
             _actionChainPerformer = actionChainPerformer;
+            _actionFactory = actionFactory;
         }
         public TurnResult MakeTurn(IAction playerAction, Game game)
         {
-            var actionChain = CreateActionChain(playerAction);
+            var actionChain = CreateActionChain(game.Field, playerAction);
             if (!ValidateChain(actionChain))
             {
                 return TurnResult.Invalid;
@@ -37,14 +40,17 @@ namespace DataLayer.Actions
         private IAction[] CreateActionChain(Field field, IAction playerAction)
         {
             var actionChain = new List<IAction>();
-            actionChain.Add();
+            actionChain.Add(_actionFactory.CreateNext(field, playerAction));
+            while (!(actionChain.Last() is FailAction || actionChain.Last() is SuccessAction))
+            {
+                actionChain.Add(_actionFactory.CreateNext(field, actionChain.Last()));
+            }
             return new IAction[0];
         }
 
         private bool ValidateChain(IAction[] actionChain)
         {
-            // TODO Make last-action-based solution
-            return true;
+            return !(actionChain.Last() is FailAction);
         }
     }
 }

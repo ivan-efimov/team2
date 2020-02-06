@@ -11,7 +11,7 @@ namespace DataLayer.Actions
         Field Undo(Field field, IAction[] actions);
     }
 
-    public class ActionChainPerformer :IActionChainPerformer
+    public class ActionChainPerformer : IActionChainPerformer
     {
         public Field Do(Field field, IAction[] actions)
         {
@@ -59,12 +59,46 @@ namespace DataLayer.Actions
     {
         public Field Do(Field field, IAction action)
         {
-            throw new NotImplementedException();
+            var result = field;
+            var moveAction = action as MoveAction;
+
+            var actorCell = result.At(moveAction.ActionPoint).Last();
+            result.At(moveAction.ActionPoint).RemoveAt(
+                result.At(moveAction.ActionPoint).Count - 1);
+            result.At(moveAction.DestinationPoint).Add(actorCell);
+
+            return result;
         }
 
         public Field Undo(Field field, IAction action)
         {
             throw new NotImplementedException();
+        }
+    }
+
+    public class FailActionPerformer : IActionPerformer
+    {
+        public Field Do(Field field, IAction action)
+        {
+            return field;
+        }
+
+        public Field Undo(Field field, IAction action)
+        {
+            return field;
+        }
+    }
+
+    public class SuccessActionPerformer : IActionPerformer
+    {
+        public Field Do(Field field, IAction action)
+        {
+            return field;
+        }
+
+        public Field Undo(Field field, IAction action)
+        {
+            return field;
         }
     }
 }
