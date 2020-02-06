@@ -1,5 +1,6 @@
 using DataLayer.Actions;
 using DataLayer.GameService;
+using DataLayer.LevelFactories;
 using LightInject;
 
 namespace thegame
@@ -14,6 +15,7 @@ namespace thegame
             serviceRegistry.Register<IGameService, GameService>();
             serviceRegistry.Register<ITurnService, TurnService>();
 
+            serviceRegistry.Register<ILevelFactory, TxtLevelFactory>();
         }
     }
 }
