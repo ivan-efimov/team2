@@ -11,6 +11,9 @@ namespace thegame
             serviceRegistry.Register<IGameStorage, GameStorage>(new PerContainerLifetime());
             serviceRegistry.Register<IActionChainPerformer, ActionChainPerformer>();
             serviceRegistry.Register<IActionFactory, ActionFactory>();
+            serviceRegistry.Register<IGameService, GameService>();
+            serviceRegistry.Register<ITurnService, TurnService>();
+
         }
     }
 }
