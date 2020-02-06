@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using DataLayer.Cells;
 
@@ -60,6 +61,11 @@ namespace DataLayer
 
         public List<ICell> this[int i, int j] {
             get { return _cells[i][j]; }
+        }
+
+        public List<ICell> At(Point p)
+        {
+            return _cells[p.X][p.Y];
         }
 
     }
