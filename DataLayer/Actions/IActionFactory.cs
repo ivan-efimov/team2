@@ -10,7 +10,7 @@ namespace DataLayer.Actions
     {
         IAction CreateNext(Field field, IAction previousAction);
     }
-    public class ActionFactory
+    public class ActionFactory : IActionFactory
     {
         public IAction CreateNext(Field field, IAction previousAction)
         {

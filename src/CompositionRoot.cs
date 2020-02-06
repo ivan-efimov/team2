@@ -1,3 +1,4 @@
+using DataLayer.Actions;
 using DataLayer.GameService;
 using LightInject;
 
@@ -7,8 +8,9 @@ namespace thegame
     {
         public void Compose(IServiceRegistry serviceRegistry)
         {
-            serviceRegistry.Register<IGameService, GameService>(new PerContainerLifetime());
-            
+            serviceRegistry.Register<IGameStorage, GameStorage>(new PerContainerLifetime());
+            serviceRegistry.Register<IActionChainPerformer, ActionChainPerformer>();
+            serviceRegistry.Register<IActionFactory, ActionFactory>();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace DataLayer.Actions
 {
-    public class TurnService
+    public class TurnService : ITurnService
     {
         private readonly IActionChainPerformer _actionChainPerformer;
         private readonly IActionFactory _actionFactory;
@@ -13,7 +13,7 @@ namespace DataLayer.Actions
             _actionChainPerformer = actionChainPerformer;
             _actionFactory = actionFactory;
         }
-        public TurnResult MakeTurn(IAction playerAction, Game game)
+        public TurnResult MakeTurn(IAction playerAction, ref Game game)
         {
             var actionChain = CreateActionChain(game.Field, playerAction);
             if (!ValidateChain(actionChain))

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace DataLayer.Actions
 {
@@ -9,5 +10,7 @@ namespace DataLayer.Actions
         public int Score { get; set; }
 
         public Guid ID { get; set; }
+        
+        public Point PlayerPosition { get; set; }
     }
 }
