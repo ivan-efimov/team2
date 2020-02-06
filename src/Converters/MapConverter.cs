@@ -12,6 +12,22 @@ namespace thegame.Converters
 {
     public static class MapConverter
     {
+        private static string TypeToStr<TCell>(TCell cell) where TCell : ICell
+        {
+            switch (cell)
+            {
+                case Wall wall:
+                    return "wall";
+                case Player player:
+                    return "player";
+                case Box box:
+                    return "box";
+                case Target target:
+                    return "target";
+                default:
+                    return String.Empty;
+            }
+        }
         public static GameDto GameToGameDto(Game game)
         {
             List<CellDto> cellDtos = new List<CellDto>();
@@ -22,11 +38,13 @@ namespace thegame.Converters
                 {
                     foreach (var cell in game.Field._cells[row][col])
                     {
+                        if (cell == null)
+                            continue;
                         int zIndex = GetZIndexByCellType(cell);
                         CellDto cellDto = new CellDto(
                             $"{col}_{row}_{cell?.GetType().ToString()??String.Empty}",
                             new Vec(col, row),
-                            cell?.GetType().ToString()??String.Empty,
+                            TypeToStr(cell),
                             string.Empty,
                             zIndex
                         );

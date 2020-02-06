@@ -40,6 +40,7 @@ namespace DataLayer.Actions
         private IAction[] CreateActionChain(Field field, IAction playerAction)
         {
             var actionChain = new List<IAction>();
+            actionChain.Add(playerAction);
             actionChain.Add(_actionFactory.CreateNext(field, playerAction));
             while (!(actionChain.Last() is FailAction || actionChain.Last() is SuccessAction))
             {
@@ -50,7 +51,7 @@ namespace DataLayer.Actions
 
         private bool ValidateChain(IAction[] actionChain)
         {
-            return !(actionChain.Last() is FailAction);
+            return !(actionChain.LastOrDefault() is FailAction);
         }
     }
 }
