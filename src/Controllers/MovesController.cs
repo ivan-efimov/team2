@@ -3,6 +3,7 @@ using System.Linq;
 using DataLayer.Actions;
 using DataLayer.GameService;
 using Microsoft.AspNetCore.Mvc;
+using thegame.Converters;
 using thegame.Models;
 using thegame.Services;
 
@@ -12,23 +13,26 @@ namespace thegame.Controllers
     public class MovesController : Controller
     {
         private IGameService gameService;
-        public MovesController(IGameService gameService) => this.gameService = gameService;
-        
+        private IGameStorage gameStorage;
+        public MovesController(IGameService gameService, IGameStorage gameStorage)
+        {
+            this.gameStorage = gameStorage;
+            this.gameService = gameService;
+        }
+
         [HttpPost]
         public IActionResult Moves(Guid gameId, [FromBody]UserInputForMovesPost userInput)
         {
-            var game = TestData.AGameDto(userInput.ClickedPos ?? new Vec(1, 1));
-
+            var game = gameStorage.GetGameById(gameId);
             try
             {
                 var command = CommandConverter.GetCommand(userInput.KeyPressed);
-                gameService.PerformCommand(gameId, command);
-
-                if (userInput.ClickedPos != null)
-                    game.Cells.First(c => c.Type == "color4").Pos = userInput.ClickedPos;
-            } catch {}
-
-            return new ObjectResult(game);
+                return new ObjectResult(MapConverter.GameToGameDto(gameService.PerformCommand(gameId, command)));
+            }
+            catch
+            {
+                return new ObjectResult(game);
+            }
         }
     }
 }
