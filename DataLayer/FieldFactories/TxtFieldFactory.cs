@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text;
 using DataLayer.Cells;
 
 namespace DataLayer.FieldFactories
 {
-    enum TypeIds
+    public enum TypeIds
     {
         Empty = 0,
         Player = 1,
@@ -16,21 +18,34 @@ namespace DataLayer.FieldFactories
         Wall = 4
     }
 
-    class TxtFieldFactory : IFieldFactory
+    public class TxtFieldFactory : IFieldFactory
     {
         public Field Create(Stream inputStream)
         {
             StreamReader sr = new StreamReader(inputStream);
-            string[] fieldData = sr.ReadToEnd().Split("\n");
-            int height = fieldData.GetLength(0);
-            int width = fieldData[0].Length;
-            ICell[,] cells = new ICell[height,width];
-            for (int i = 0; i < height; i++)
+            string[] fieldData = sr.ReadToEnd().Replace("\r", string.Empty).Split("\n");
+            int[] fieldSize = fieldData[0].Split(" ").Select(x => int.Parse(x)).ToArray();
+            int height, width;
+            List<ICell>[][] cells;
+            (height, width) = (fieldSize[0], fieldSize[1]);
+            if (fieldData.GetLength(0) != height + 1)
             {
+                throw new DataException("wrong height or count of lines in file");
+            }
+
+            cells = new List<ICell>[height][];
+            for (int i = 1; i <= height; i++)
+            {
+                if (fieldData[i].Length != width)
+                {
+                    throw new DataException($"wrong width or lenght of {i} line in file");
+                }
+                cells[i - 1] = new List<ICell>[width];
                 for (int j = 0; j < width; j++)
                 {
                     TypeIds cellTypeId = (TypeIds) char.GetNumericValue(fieldData[i][j]);
-                    cells[i,j] = CreateCellOfType(cellTypeId);
+                    cells[i - 1][j] = new List<ICell>();
+                    cells[i - 1][j].Add(CreateCellOfType(cellTypeId));
                 }
             }
             return new Field(cells);
