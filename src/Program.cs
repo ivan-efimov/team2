@@ -15,6 +15,7 @@ namespace thegame
         {
             return WebHost.CreateDefaultBuilder(args)
                 .UseLightInject()
+                
                 .UseStartup<Startup>()
                 .Build();
         }

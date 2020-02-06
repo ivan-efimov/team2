@@ -5,7 +5,11 @@ using DataLayer.GameService;
 
 namespace DataLayer.Actions
 {
-    public class GameService
+    public interface IGameService
+    {
+        Game PerformCommand(Guid gameId, ICommand command);
+    }
+    public class GameService : IGameService
     {
         private readonly IGameStorage _gameStorage;
         private readonly ITurnService _turnService;
