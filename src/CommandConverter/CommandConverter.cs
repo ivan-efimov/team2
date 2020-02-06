@@ -10,7 +10,7 @@ namespace thegame
         public static ICommand GetCommand(DirectionsKeys key)
             => new MoveCommand(GetDirection(key));
 
-        private static DirectionsKeys getDirectionKeyByCode
+        public static DirectionsKeys GetDirectionKeyByCode
             (int keycode) => (DirectionsKeys) keycode;
         
         private static Directions GetDirection(DirectionsKeys key)

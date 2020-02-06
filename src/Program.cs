@@ -1,3 +1,4 @@
+using LightInject.Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
@@ -13,6 +14,7 @@ namespace thegame
         public static IWebHost BuildWebHost(string[] args)
         {
             return WebHost.CreateDefaultBuilder(args)
+                .UseLightInject()
                 .UseStartup<Startup>()
                 .Build();
         }
