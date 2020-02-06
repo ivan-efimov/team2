@@ -27,7 +27,7 @@ namespace DataLayer.Actions
             {
                 for (int i = 0; i < Field.Height; i++)
                 {
-                    for (int j = 0; j < Field.Height; j++)
+                    for (int j = 0; j < Field.Width; j++)
                     {
                         foreach (var cell in Field._cells[i][j])
                         {

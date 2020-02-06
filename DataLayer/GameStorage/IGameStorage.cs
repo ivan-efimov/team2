@@ -16,7 +16,7 @@ namespace DataLayer.GameService
     {
         private readonly Dictionary<Guid, Game> _games = new Dictionary<Guid, Game>();
         private readonly Dictionary<string, Level> _levels;
-        private readonly string _defaultLevelId;
+        private readonly string _defaultLevelId ;
 
         public GameStorage(ILevelFactory levelFactory)
         {
@@ -25,7 +25,7 @@ namespace DataLayer.GameService
             {
                 throw new FileNotFoundException("No level files in level directory");
             }
-            _defaultLevelId = files[0];
+            _defaultLevelId = "Level1.txt";
             _levels = files.Select(filename => levelFactory
                     .Create(new FileInfo(Path.Join(Directory.GetCurrentDirectory(), filename))))
                 .ToDictionary(level => level.id);

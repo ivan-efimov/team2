@@ -24,9 +24,9 @@ namespace thegame.Converters
                     {
                         int zIndex = GetZIndexByCellType(cell);
                         CellDto cellDto = new CellDto(
-                            $"{col}_{row}_{cell.GetType()}",
+                            $"{col}_{row}_{cell?.GetType().ToString()??String.Empty}",
                             new Vec(col, row),
-                            cell.GetType().ToString(),
+                            cell?.GetType().ToString()??String.Empty,
                             string.Empty,
                             zIndex
                         );
@@ -63,22 +63,24 @@ namespace thegame.Converters
 
         private static int GetZIndexByCellType(ICell cell)
         {
+            if (cell == null)
+                return 0;
             Type cellType = cell.GetType();
             if (cellType == typeof(Box))
             {
-                return 2;
+                return 3;
             }
             else if (cellType == typeof(Wall))
             {
-                return 2;
+                return 3;
             }
             else if (cellType == typeof(Player))
             {
-                return 1;
+                return 2;
             }
             else if (cellType == typeof(Target))
             {
-                return 0;
+                return 1;
             }
             else return 0;
         }
