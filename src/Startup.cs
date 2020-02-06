@@ -1,4 +1,5 @@
 using System;
+using LightInject;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +15,11 @@ namespace thegame
         }
 
         public IConfiguration Configuration { get; }
+        
+        public void ConfigureContainer(IServiceContainer container)
+        {
+            container.RegisterFrom<CompositionRoot>();
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -29,5 +35,6 @@ namespace thegame
             app.UseMvc();
             app.UseSpa(c => { });
         }
+        
     }
 }
