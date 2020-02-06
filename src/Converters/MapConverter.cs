@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataLayer;
 using DataLayer.Actions;
 using DataLayer.Cells;
 using DataLayer.Helpers;
@@ -19,7 +20,7 @@ namespace thegame.Converters
             {
                 for (int col = 0; col < game.Field.Width; col++)
                 {
-                    foreach (var cell in game.Field._cells[row][col] )
+                    foreach (var cell in game.Field._cells[row][col])
                     {
                         int zIndex = GetZIndexByCellType(cell);
                         CellDto cellDto = new CellDto(
@@ -28,7 +29,7 @@ namespace thegame.Converters
                             cell.GetType().ToString(),
                             string.Empty,
                             zIndex
-                            );
+                        );
                         cellDtos.Add(cellDto);
                     }
                 }
@@ -38,10 +39,26 @@ namespace thegame.Converters
                 false,
                 game.Field.Width,
                 game.Field.Height,
-                Guid.Empty,
-                GameHelper.IsGameSolved(game), 
+                game.ID,
+                GameHelper.IsGameSolved(game),
                 game.Score);
 
+        }
+
+        public static Game GameDtoToGame(GameDto gameDto)
+        {
+            Game game = new Game();
+            game.Score = gameDto.Score;
+            game.ID = gameDto.Id;
+            game.Field = new Field(gameDto.Height, gameDto.Width);
+            foreach (var cellDto in gameDto.Cells)
+            {
+                int row, col;
+                
+                (row, col) = (cellDto.Pos.Y, cellDto.Pos.X);
+                game.Field[row, col].Add(CreateCellByType(cellDto.Type));
+            }
+            return game;
         }
 
         private static int GetZIndexByCellType(ICell cell)
@@ -65,5 +82,28 @@ namespace thegame.Converters
             }
             else return 0;
         }
+
+        private static ICell CreateCellByType(string type)
+        {
+            if (type == typeof(Box).ToString())
+            {
+                return  new Box();
+            }
+            else if (type == typeof(Player).ToString())
+            {
+                return new Player();
+            }
+            else if (type == typeof(Wall).ToString())
+            {
+                return new Wall();
+            }
+            else if (type == typeof(Target).ToString())
+            { 
+
+                return new Target();
+            }
+            else return null;
+        }
+
     }
 }
