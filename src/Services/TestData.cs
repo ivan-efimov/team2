@@ -19,7 +19,7 @@ namespace thegame.Services
                 new CellDto("2", new Vec(5, 4), "color1", "", 0),
                 new CellDto("3", new Vec(3, 1), "color2", "", 20),
                 new CellDto("4", new Vec(1, 3), "color2", "", 20),
-                new CellDto("5", movingObjectPosition, "color4", "☺", 10),
+                new CellDto("5", movingObjectPosition, "color4", "", 10),
             };
 
             var walls = new List<CellDto>();
