@@ -1,0 +1,6 @@
+﻿5;5;testlevel
+brick_wall;brick_wall;brick_wall;brick_wall;brick_wall
+brick_wall;target;brick_wall;player;brick_wall
+brick_wall;basic_box;brick_wall;empty;brick_wall
+brick_wall;empty;empty;empty;brick_wall
+brick_wall;brick_wall;brick_wall;brick_wall;brick_wall
